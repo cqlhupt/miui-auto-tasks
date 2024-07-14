@@ -53,9 +53,9 @@ def get_platform() -> str:
 
 class Account(BaseModel):
     """账号处理器"""
-    uid: str = "100000"
+    uid: str = os.environ['ACCOUNT']
     """账户ID 非账户用户名或手机号"""
-    password: str = ""
+    password: str = os.environ['PASSWORD']
     """账户密码或其MD5哈希"""
     cookies: Union[dict, str] = {}
     """账户登录后的cookies"""
@@ -63,25 +63,25 @@ class Account(BaseModel):
     """登录账户时所用浏览器的 User-Agent"""
     user_agent: str = 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Safari/537.36'
     """登录社区时所用浏览器的 User-Agent"""
-    device: str = ""
+    device: str = "MI 10S"
     """设备代号"""
-    device_model: str = ""
+    device_model: str = "MI 10S"
     """设备名称"""
-    CheckIn: bool = False
+    CheckIn: bool = True
     """社区成长值签到，启用功能意味着你愿意自行承担相关风险"""
-    BrowseUserPage: bool = False
+    BrowseUserPage: bool = True
     """社区浏览个人主页10秒，启用功能意味着你愿意自行承担相关风险"""
-    BrowsePost: bool = False
+    BrowsePost: bool = True
     """社区浏览帖子10秒，启用功能意味着你愿意自行承担相关风险"""
-    BrowseVideoPost: bool = False
+    BrowseVideoPost: bool = True
     """社区浏览视频帖子5分钟，启用功能意味着你愿意自行承担相关风险"""
-    ThumbUp: bool = False
+    ThumbUp: bool = True
     """点赞帖子，启用功能意味着你愿意自行承担相关风险"""
-    BrowseSpecialPage: bool = False
+    BrowseSpecialPage: bool = True
     """社区在活动期间可能会出现限时的“浏览指定专题页”任务，启用功能意味着你愿意自行承担相关风险"""
-    BoardFollow: bool = False
+    BoardFollow: bool = True
     """社区可能会出现限时的“加入圈子”任务，启用功能意味着你愿意自行承担相关风险"""
-    CarrotPull: bool = False
+    CarrotPull: bool = True
     """社区拔萝卜，启用功能意味着你愿意自行承担相关风险"""
 
     @field_validator("password")
